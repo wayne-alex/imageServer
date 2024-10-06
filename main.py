@@ -29,7 +29,7 @@ def upload_image():
             f.write(img_byte)
 
         # Return the URL or path where the image is stored
-        image_url = f"https://your-alibaba-server.com/uploads/{filename}"
+        image_url = f"http://47.250.81.38:5010/uploads/{filename}"
         return jsonify({"image_url": image_url, "message": "Image uploaded successfully."}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -41,7 +41,7 @@ def get_images():
         images = []
         for filename in os.listdir(app.config['UPLOAD_FOLDER']):
             if filename.endswith('.png'):  # Adjust for your image formats
-                image_url = f"https://your-alibaba-server.com/uploads/{filename}"
+                image_url = f"http://47.250.81.38:5010/uploads/{filename}"
                 images.append({"filename": filename, "image_url": image_url})
         return jsonify(images), 200
     except Exception as e:
